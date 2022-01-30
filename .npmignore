@@ -1,0 +1,4 @@
+_action_deploy
+node_modules
+scripts
+lib.ts

@@ -1,0 +1,24 @@
+{
+  "name": "transform-docs",
+  "version": "0.1.0",
+  "description": "Package to transform Svelte docs to JSON fromat, friendly for API server.",
+  "main": "lib/transform.js",
+  "scripts": {
+    "build": "node scripts/compile_lib.js",
+    "commit": "npm version patch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sveltejs-translations/transform-docs.git"
+  },
+  "author": "Alexey Schebelev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sveltejs-translations/transform-docs/issues"
+  },
+  "homepage": "https://github.com/sveltejs-translations/transform-docs#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.14",
+    "fetch-repo-dir": "^1.0.6"
+  }
+}
