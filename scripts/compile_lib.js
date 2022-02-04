@@ -1,6 +1,7 @@
 const fetchRepoDir = require('fetch-repo-dir');
 const {spawnSync} = require('child_process');
 const fs = require('fs/promises');
+const path = require('path');
 const { build } = require('esbuild');
 
 const TMP_DIR = './_action_deploy';
@@ -14,6 +15,8 @@ async function clear(){
 
   console.log('Downloading repo sveltejs/action-deploy-docs...');
   await fetchRepoDir({src:'sveltejs/action-deploy-docs',dir: TMP_DIR});
+
+  await patch_faq_title();
 
   console.log('Installing dependencies...');
   spawnSync('npm',['install'],{
@@ -38,3 +41,12 @@ async function clear(){
 
   console.log("Done! Don't to run 'npm version patch' and push the commit to update package version in the repo!");
 })();
+
+
+async function patch_faq_title(){
+  const file = path.join(TMP_DIR,'src','format','frontmatter.ts');
+  console.log('Patching FAQ title...');
+  let body = await fs.readFile(file,'utf-8');
+  body = body.replace('vFile.data.frontmatter.question','(vFile.data.frontmatter.question || vFile.data.frontmatter.title)');
+  await fs.writeFile(file,body);
+}
