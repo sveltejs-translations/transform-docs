@@ -1,6 +1,6 @@
 {
   "name": "transform-docs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Package to transform Svelte docs to JSON fromat, friendly for API server.",
   "main": "lib/transform.js",
   "scripts": {
